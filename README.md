@@ -1,2 +1,2 @@
-# Twitter-clone
-My twitter clone project
+# Django-Forum
+Config files for my GitHub profile.

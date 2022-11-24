@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+<link rel="icon" src="{% static 'img/cook-book.png' %}" />
+<section class="title-name">
+  <div class="img-col">
+    {% load static %}
+    <img src="{% static 'img/cook-book.png' %}" class="image" />
+  </div>
+  <div class="text-col">
+    <h3>Chef's Kitchen</h3><br />
+  </div>
+</section>
+
+<section class="content">
+  
+  <section class="post_form">
+    <form action="/edit/{{posts.id}}/" class="edit-form" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <img src="{% static 'img/chef.png' %}" class="edit-home_icon" />
+      <div class="post_two">
+        <div class="edit-input">
+            <input type="text" name="name" placeholder="Name" value="{{posts.name}}" required class="name" />
+            <input name="body" placeholder="Tell us Anything" value="{{posts.body}}"     required></input>
+            {% if posts.image.url %} 
+            <img src="{{posts.image.url}}" class="post-img" /> 
+            <br>
+            <br>
+            <input type="file" id="files" name="image" />
+            {% endif %}
+        </div> <br> 
+        <div class="submitt">
+            
+            <button class="cancelbtn"><a type="submit" href="{% url 'index' %}" id="cancel">Cancel</a></button>
+          <button type="submit" style="
+          padding: 1.5px;
+          background-color: white;
+          border-radius: 10px;
+          border: 0;">
+            <input type="submit" value="Update" class="button" />
+          </button>  
+        </div>
+      </div>
+    </form>
+  </section>
+</section>
+{% endblock %} 
